@@ -9,7 +9,12 @@ const configLoginFb = {
   appSecret: 'facebook001',
 };
 @Module({
-  imports: [StoreModule],
+  imports: [
+    StoreModule.register({
+      dirname: 'store',
+      filename: 'user.json',
+    }),
+  ],
   controllers: [UsersController],
   providers: [
     {

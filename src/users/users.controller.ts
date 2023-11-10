@@ -21,7 +21,6 @@ export class UsersController {
 
   @Get()
   getUsers() {
-    console.log(this.userLogin);
     return this.usersService.getUsers();
   }
 
@@ -33,6 +32,7 @@ export class UsersController {
     //     const userReal = plainToClass(UsersDto, user, {
     //       excludeExtraneousValues: true,
     //     });
+    this.storeService.save(user);
     return UsersDto.plainToClass(user);
   }
 
