@@ -1,10 +1,11 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Inject, Post } from '@nestjs/common';
 import { StoreService } from 'src/store/store.service';
 import { PostsService } from './posts.service';
 
 @Controller('posts')
 export class PostsController {
   constructor(
+    @Inject('STORE_SERVICEposts.json')
     private readonly storeService: StoreService,
     private readonly postsService: PostsService,
   ) {}

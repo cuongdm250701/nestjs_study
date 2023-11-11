@@ -5,8 +5,7 @@ import { StoreModule } from 'src/store/store.module';
 
 @Module({
   imports: [
-    StoreModule.register({
-      dirname: 'store',
+    StoreModule.forFeature({
       filename: 'posts.json',
     }),
   ],

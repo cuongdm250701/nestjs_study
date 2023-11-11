@@ -10,9 +10,8 @@ const configLoginFb = {
 };
 @Module({
   imports: [
-    StoreModule.register({
-      dirname: 'store',
-      filename: 'user.json',
+    StoreModule.forFeature({
+      filename: 'users.json',
     }),
   ],
   controllers: [UsersController],

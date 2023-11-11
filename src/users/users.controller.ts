@@ -16,6 +16,7 @@ export class UsersController {
   constructor(
     @Inject('USER_SERVICE_ALIAS') private readonly usersService: UsersService,
     @Inject('USER_LOGIN') private userLogin: any,
+    @Inject('STORE_SERVICEusers.json')
     private readonly storeService: StoreService,
   ) {}
 
