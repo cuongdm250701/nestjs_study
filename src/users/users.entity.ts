@@ -11,5 +11,8 @@ export class UserEntity {
   lastName: string;
 
   @Column()
+  email: string;
+
+  @Column()
   isActive: boolean;
 }

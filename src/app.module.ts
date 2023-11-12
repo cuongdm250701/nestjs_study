@@ -4,22 +4,14 @@ import { PostsModule } from './posts/posts.module';
 import { StoreModule } from './store/store.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './users/users.entity';
+import { dataSourceOptions } from 'db/data-source';
 
 @Module({
   imports: [
     PostsModule,
     UsersModule,
     StoreModule.forRoot(),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 6606,
-      username: 'root',
-      password: 'cuongdm250701',
-      database: 'nestjs_study',
-      entities: [UserEntity],
-      synchronize: true,
-    }),
+    TypeOrmModule.forRoot(dataSourceOptions),
   ],
   controllers: [],
   providers: [],
