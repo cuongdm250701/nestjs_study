@@ -22,19 +22,20 @@ export class UsersController {
 
   @Get()
   getUsers() {
-    return this.usersService.getUsers();
+    // return this.usersService.getUsers();
   }
 
   @Post()
-  createUser(@Body() user: UsersDto): UsersDto {
+  async createUser(@Body() user: UsersDto): Promise<UsersDto> {
     user.id = 1;
     user.createdAt = new Date();
     user.updatedAt = new Date();
     //     const userReal = plainToClass(UsersDto, user, {
     //       excludeExtraneousValues: true,
     //     });
-    this.storeService.save(user);
-    return UsersDto.plainToClass(user);
+    //  return this.storeService.save(user);
+    // return UsersDto.plainToClass(user);
+    return this.usersService.save(user);
   }
 
   @Get(':id')

@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
-import { UsersRepository } from './users.repository';
 import { StoreModule } from 'src/store/store.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserEntity } from './users.entity';
 
 const configLoginFb = {
   appId: 'facebook001',
@@ -13,6 +14,7 @@ const configLoginFb = {
     StoreModule.forFeature({
       filename: 'users.json',
     }),
+    TypeOrmModule.forFeature([UserEntity]),
   ],
   controllers: [UsersController],
   providers: [
@@ -26,7 +28,6 @@ const configLoginFb = {
       useValue: configLoginFb,
     },
     // useFactory
-    UsersRepository,
   ], // chỉ ở cấp độ modules
 })
 export class UsersModule {}
