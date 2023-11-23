@@ -6,10 +6,14 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersDto } from './dto/users.dto';
 import { StoreService } from 'src/store/store.service';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { storageConfig } from 'helpers/config';
 
 @Controller('users')
 export class UsersController {
@@ -42,5 +46,17 @@ export class UsersController {
   getUserById(@Param('id', ParseIntPipe) id: number) {
     console.log(typeof id);
     return id;
+  }
+
+  @Post('/upload-avatar')
+  @UseInterceptors(
+    FileInterceptor('avatar', {
+      storage: storageConfig('avatar'),
+      fileFilter: (req, file, cb) => {},
+    }),
+  )
+  async uploadAvatar(@UploadedFile() file: Express.Multer.File): Promise<any> {
+    console.log('upload ava', file);
+    console.log('url', file.path);
   }
 }

@@ -13,6 +13,9 @@ export class UserEntity {
   @Column()
   email: string;
 
+  @Column({ nullable: true, default: null })
+  avatar: string;
+
   @Column()
   isActive: boolean;
 }
